@@ -1,3 +1,13 @@
+// CMSC 350 Data Structures and Analysis
+// Project 3
+// Evan Martin
+// December 1, 2020
+
+// This class creates a GUI that allows users to input binary trees in
+// a specified format and perform various operations on the tree
+// results of the operations are displayed in the GUI
+
+
 package project3;
 
 import javax.swing.*;
@@ -90,43 +100,31 @@ class BTCPanel extends JPanel {
         //makeTree button action listener
         makeTree.addActionListener(e -> {
             expression = expressionText.getText();
-            tree = new BinaryTree(expression);
-            resultText.setText(tree.toString());
+            try {
+                tree = new BinaryTree(expression);
+                resultText.setText("Tree successfully created");
+            } catch (InvalidTreeSyntax ignored) {
+            }
+
         });
 
         //isBalanced button action listener
-        isBalanced.addActionListener(e -> {
-            expression = expressionText.getText();
-            resultText.setText(BinaryTree.isBalanced(tree));
-        });
+        isBalanced.addActionListener(e -> resultText.setText(BinaryTree.isBalanced()));
+
         //isFull button action listener
-        isFull.addActionListener(e -> {
-            expression = expressionText.getText();
-            resultText.setText(BinaryTree.isFull(tree));
-        });
+        isFull.addActionListener(e -> resultText.setText(BinaryTree.isFull()));
 
         //isProper button action listener
-        isProper.addActionListener(e -> {
-            expression = expressionText.getText();
-            resultText.setText(BinaryTree.isProper(tree));
-        });
+        isProper.addActionListener(e -> resultText.setText(BinaryTree.isProper()));
+
         //height button action listener
-        height.addActionListener(e -> {
-            expression = expressionText.getText();
-            resultText.setText(BinaryTree.height(tree));
-        });
+        height.addActionListener(e -> resultText.setText(BinaryTree.height()));
 
         //nodes button action listener
-        nodes.addActionListener(e -> {
-            expression = expressionText.getText();
-            resultText.setText(BinaryTree.nodes(tree));
-        });
+        nodes.addActionListener(e -> resultText.setText(BinaryTree.nodes()));
+
         //inorder button action listener
-        inorder.addActionListener(e -> {
-            expression = expressionText.getText();
-            resultText.setText(BinaryTree.inorder(tree));
-        });
+        inorder.addActionListener(e -> resultText.setText(BinaryTree.inorder()));
 
     }
-
 }
